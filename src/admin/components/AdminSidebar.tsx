@@ -39,9 +39,9 @@ export const AdminSidebar: React.FC<SidebarProps> = ({
 
   const isActiveRoute = (to: string) => {
     // TODO: ajustarlo cuando estemos en la pantalla de producto
-    // if (pathname.includes('/admin/products/') && to === '/admin/products') {
-    //   return true;
-    // }
+    if (pathname.includes('/admin/products/') && to === '/admin/products') {
+      return true;
+    }
 
     return pathname === to; // true, false
   };
@@ -78,7 +78,7 @@ export const AdminSidebar: React.FC<SidebarProps> = ({
                       : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                   }`}
                 >
-                  <Icon size={20} className='flex-shrink-0' />
+                  <Icon size={20} className='shrink-0' />
                   {!isCollapsed && (
                     <span className='font-medium'>{item.label}</span>
                   )}
