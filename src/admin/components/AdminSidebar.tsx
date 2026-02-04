@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link, useLocation } from 'react-router';
 import {
   Home,
   Users,
@@ -22,25 +22,38 @@ export const AdminSidebar: React.FC<SidebarProps> = ({
   isCollapsed,
   onToggle,
 }) => {
+  const { pathname } = useLocation();
+
   const menuItems = [
-    { icon: Home, label: 'Dashboard', active: true },
-    { icon: BarChart3, label: 'Analytics' },
-    { icon: Users, label: 'Users' },
-    { icon: ShoppingCart, label: 'Orders' },
-    { icon: FileText, label: 'Reports' },
-    { icon: Bell, label: 'Notifications' },
-    { icon: Settings, label: 'Settings' },
-    { icon: HelpCircle, label: 'Help' },
+    { icon: Home, label: 'Dashboard', to: '/admin' },
+    { icon: BarChart3, label: 'Productos', to: '/admin/products' },
+    { icon: Users, label: 'Usuarios' },
+    { icon: ShoppingCart, label: 'Ordenes' },
+    { icon: FileText, label: 'Reportes' },
+    { icon: Bell, label: 'Notificaciones' },
+    { icon: Settings, label: 'Ajustes' },
+    { icon: HelpCircle, label: 'Ayuda' },
   ];
+
+  console.log({ pathname });
+
+  const isActiveRoute = (to: string) => {
+    // TODO: ajustarlo cuando estemos en la pantalla de producto
+    // if (pathname.includes('/admin/products/') && to === '/admin/products') {
+    //   return true;
+    // }
+
+    return pathname === to; // true, false
+  };
 
   return (
     <div
-      className={`bg-white border-r border-gray-200 transition-all duration-300 ease-in-out ${
+      className={`bg-white border-r border-gray-200 transition-all duration-300 ease-in-out  ${
         isCollapsed ? 'w-18' : 'w-64'
       } flex flex-col`}
     >
       {/* Header */}
-      <div className='p-4 border-b border-gray-200 flex items-center justify-between  h-18'>
+      <div className='p-4 border-b border-gray-200 flex items-center justify-between h-18'>
         {!isCollapsed && <CustomLogo />}
         <button
           onClick={onToggle}
@@ -57,10 +70,10 @@ export const AdminSidebar: React.FC<SidebarProps> = ({
             const Icon = item.icon;
             return (
               <li key={index}>
-                <a
-                  href='#'
+                <Link
+                  to={item.to || '/admin'}
                   className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-all duration-200 group ${
-                    item.active
+                    isActiveRoute(item.to || '/xxxx')
                       ? 'bg-blue-50 text-blue-600 border-r-2 border-blue-600'
                       : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                   }`}
@@ -69,7 +82,7 @@ export const AdminSidebar: React.FC<SidebarProps> = ({
                   {!isCollapsed && (
                     <span className='font-medium'>{item.label}</span>
                   )}
-                </a>
+                </Link>
               </li>
             );
           })}
