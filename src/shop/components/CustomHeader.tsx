@@ -5,6 +5,7 @@ import { Search, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
+import { CustomLogo } from '@/components/custom/CustomLogo';
 
 export const CustomHeader = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -37,9 +38,7 @@ export const CustomHeader = () => {
             <Button variant='ghost' size='icon' className='md:hidden'>
               <Menu className='h-5 w-5' />
             </Button>
-            <h1 className='text-xl font-semibold tracking-tight'>
-              TESLA STYLE
-            </h1>
+            <CustomLogo />
           </div>
 
           {/* Navigation - Desktop */}
