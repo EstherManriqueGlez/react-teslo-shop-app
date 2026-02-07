@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 export const FilterSidebar = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const currentSizes = searchParams.get('size')?.split(',') || []; // Example: ['xs', 'm', 'l']
+  const currentSizes = searchParams.get('sizes')?.split(',') || []; // Example: ['xs', 'm', 'l']
   const currentPrice = searchParams.get('price') || 'any';
 
   const handleSizeChanged = (size: string) => {
@@ -17,7 +17,7 @@ export const FilterSidebar = () => {
       : [...currentSizes, size];
 
     searchParams.set('page', '1'); // Reset to first page on filter change
-    searchParams.set('size', newSizes.join(','));
+    searchParams.set('sizes', newSizes.join(','));
     setSearchParams(searchParams);
   };
 
