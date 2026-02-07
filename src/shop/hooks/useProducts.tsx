@@ -7,6 +7,9 @@ export const useProducts = () => {
   const { gender } = useParams();
   const [searchParams] = useSearchParams();
 
+  const query = searchParams.get('query') || undefined;
+  // console.log({ query });
+
   const limit = searchParams.get('limit') || 9;
   const page = searchParams.get('page') || 1;
   const sizes = searchParams.get('sizes') || undefined;
@@ -47,7 +50,7 @@ export const useProducts = () => {
   return useQuery({
     queryKey: [
       'products',
-      { limit, offset, sizes, gender, minPrice, maxPrice },
+      { limit, offset, sizes, gender, minPrice, maxPrice, query },
     ],
     queryFn: () =>
       getProductsAction({
@@ -57,6 +60,7 @@ export const useProducts = () => {
         gender,
         minPrice,
         maxPrice,
+        query,
       }),
 
     staleTime: 1000 * 60 * 5, // 5 minutes
