@@ -30,7 +30,7 @@ export const AdminSidebar: React.FC<SidebarProps> = ({
   const menuItems = [
     { icon: Home, label: 'Dashboard', to: '/admin' },
     { icon: BarChart3, label: 'Productos', to: '/admin/products' },
-    { icon: Users, label: 'Usuarios' },
+    { icon: Users, label: 'Usuarios', to: '/admin/users' },
     { icon: ShoppingCart, label: 'Ordenes' },
     { icon: FileText, label: 'Reportes' },
     { icon: Bell, label: 'Notificaciones' },
