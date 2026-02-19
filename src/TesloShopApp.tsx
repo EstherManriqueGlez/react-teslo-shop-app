@@ -15,7 +15,6 @@ import { useAuthStore } from './auth/store/auth.store';
 const queryClient = new QueryClient();
 
 const CheckAuthProvider = ({ children }: PropsWithChildren) => {
-
   const { checkAuthStatus } = useAuthStore();
 
   const { isLoading } = useQuery({
@@ -39,6 +38,7 @@ export const TesloShopApp = () => {
       <CheckAuthProvider>
         <RouterProvider router={AppRouter} />
       </CheckAuthProvider>
+
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
