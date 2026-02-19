@@ -16,7 +16,6 @@ type AuthState = {
   // isAdmin: boolean;
 
   // Actions
-
   login: (email: string, password: string) => Promise<boolean>;
   logout: () => void;
   checkAuthStatus: () => Promise<boolean>;
@@ -43,7 +42,7 @@ export const useAuthStore = create<AuthState>()((set) => ({
         authSatus: 'authenticated',
       });
       return true;
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       localStorage.removeItem('token');
 
@@ -76,7 +75,7 @@ export const useAuthStore = create<AuthState>()((set) => ({
         authSatus: 'authenticated',
       });
 
-        return true;
+      return true;
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
