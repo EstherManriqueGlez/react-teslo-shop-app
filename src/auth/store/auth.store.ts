@@ -10,10 +10,10 @@ type AuthState = {
   //Properties
   user: User | null;
   token: string | null;
-  authSatus: AuthStatus;
+  authStatus: AuthStatus;
 
   // Getters
-  // isAdmin: boolean;
+  isAdmin: () => boolean;
 
   // Actions
   login: (email: string, password: string) => Promise<boolean>;
@@ -21,12 +21,20 @@ type AuthState = {
   checkAuthStatus: () => Promise<boolean>;
 };
 
-export const useAuthStore = create<AuthState>()((set) => ({
+export const useAuthStore = create<AuthState>()((set, get) => ({
   // Implementacion del Store
   user: null,
   token: null,
-  authSatus: 'checking',
-  // isAdmin: false,
+  authStatus: 'checking',
+
+  // Getters
+  isAdmin: () => {
+    const roles = get().user?.roles || [];
+    return roles.includes('admin');
+
+    // Otra forma de hacerlo en una sola línea
+    // return !!get().user?.roles?.includes('admin');
+  },
 
   // Actions
   login: async (email: string, password: string) => {
@@ -39,7 +47,7 @@ export const useAuthStore = create<AuthState>()((set) => ({
       set({
         user: data.user,
         token: data.token,
-        authSatus: 'authenticated',
+        authStatus: 'authenticated',
       });
       return true;
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -49,7 +57,7 @@ export const useAuthStore = create<AuthState>()((set) => ({
       set({
         user: null,
         token: null,
-        authSatus: 'not-authenticated',
+        authStatus: 'not-authenticated',
       });
       return false;
     }
@@ -61,7 +69,7 @@ export const useAuthStore = create<AuthState>()((set) => ({
     set({
       user: null,
       token: null,
-      authSatus: 'not-authenticated',
+      authStatus: 'not-authenticated',
     });
   },
 
@@ -72,7 +80,7 @@ export const useAuthStore = create<AuthState>()((set) => ({
       set({
         user,
         token,
-        authSatus: 'authenticated',
+        authStatus: 'authenticated',
       });
 
       return true;
@@ -82,7 +90,7 @@ export const useAuthStore = create<AuthState>()((set) => ({
       set({
         user: undefined,
         token: undefined,
-        authSatus: 'not-authenticated',
+        authStatus: 'not-authenticated',
       });
 
       return false;
