@@ -1,7 +1,7 @@
-import { useState, type FormEvent } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
-import { toast } from 'sonner';
 
+import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -17,7 +17,7 @@ export const LoginPage = () => {
 
   const [isPosting, setIsPosting] = useState(false);
 
-  const handleLogin = async (event: FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsPosting(true);
 
@@ -41,7 +41,7 @@ export const LoginPage = () => {
     <div className={'flex flex-col gap-6'}>
       <Card className='overflow-hidden p-0'>
         <CardContent className='grid p-0 md:grid-cols-2'>
-          <form className='p-6 md:p-8' onSubmit={(e) => handleLogin(e)}>
+          <form className='p-6 md:p-8' onSubmit={handleLogin}>
             <div className='flex flex-col gap-6'>
               <div className='flex flex-col items-center text-center'>
                 <CustomLogo />
