@@ -5,7 +5,7 @@ interface Props {
 
 export const CustomJumbotron = ({ title, subtitle }: Props) => {
   const defaultSubtitle =
-    'Ropa minimalista y elegante inspirada en el diseño futurista de Tesla. Calidad premium para un estilo atemporal.';
+    'Minimalist and elegant clothing inspired by Tesla\'s futuristic design. Premium quality for a timeless style.';
   return (
     <section className='py-10 px-4 lg:px-8 bg-muted/30'>
       <div className='container mx-auto text-center'>
