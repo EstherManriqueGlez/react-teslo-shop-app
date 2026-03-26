@@ -28,9 +28,9 @@ export const ProductsGrid = ({ products }: Props) => {
       <div className='container mx-auto'>
         <div className='flex items-center justify-between mb-8'>
           <div className='flex items-center space-x-4'>
-            <h2 className='text-3xl font-light'>Productos</h2>
+            <h2 className='text-3xl font-light'>Products</h2>
             <span className='text-muted-foreground'>
-              ({products.length} productos)
+              ({products.length} products)
             </span>
           </div>
 
@@ -42,7 +42,7 @@ export const ProductsGrid = ({ products }: Props) => {
               className='lg:hidden'
             >
               <Filter className='h-4 w-4 mr-2' />
-              Filtros
+              Filters
             </Button>
 
             <div className='hidden md:flex border rounded-md'>
@@ -76,13 +76,13 @@ export const ProductsGrid = ({ products }: Props) => {
           {showFilters && (
             <div className='fixed inset-0 z-50 bg-background p-4 lg:hidden'>
               <div className='flex items-center justify-between mb-6'>
-                <h3 className='text-lg font-semibold'>Filtros</h3>
+                <h3 className='text-lg font-semibold'>Filters</h3>
                 <Button
                   variant='ghost'
                   size='sm'
                   onClick={() => setShowFilters(false)}
                 >
-                  Cerrar
+                  Close
                 </Button>
               </div>
               <FilterSidebar />
