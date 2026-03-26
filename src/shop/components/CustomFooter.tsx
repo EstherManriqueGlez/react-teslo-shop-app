@@ -9,84 +9,83 @@ export const CustomFooter = () => {
             <div>
               <CustomLogo />
               <p className='text-sm text-muted-foreground'>
-                Ropa inspirada en el diseño minimalista y la innovación de
-                Tesla.
+                Clothing inspired by the minimalistic design and innovation of Tesla. Premium quality for a timeless style.
               </p>
             </div>
 
             <div>
-              <h4 className='font-medium mb-4'>Productos</h4>
+              <h4 className='font-medium mb-4'>Products</h4>
               <ul className='space-y-2 text-sm text-muted-foreground'>
                 <li>
                   <a href='#' className='hover:text-foreground'>
-                    Camisetas
+                    T-Shirts
                   </a>
                 </li>
                 <li>
                   <a href='#' className='hover:text-foreground'>
-                    Sudaderas
+                    Hoodies
                   </a>
                 </li>
                 <li>
                   <a href='#' className='hover:text-foreground'>
-                    Chaquetas
+                    Jackets
                   </a>
                 </li>
                 <li>
                   <a href='#' className='hover:text-foreground'>
-                    Accesorios
+                    Accessories
                   </a>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h4 className='font-medium mb-4'>Ayuda</h4>
+              <h4 className='font-medium mb-4'>Help</h4>
               <ul className='space-y-2 text-sm text-muted-foreground'>
                 <li>
                   <a href='#' className='hover:text-foreground'>
-                    Contacto
+                    Contact
                   </a>
                 </li>
                 <li>
                   <a href='#' className='hover:text-foreground'>
-                    Envíos
+                    Shipping
                   </a>
                 </li>
                 <li>
                   <a href='#' className='hover:text-foreground'>
-                    Devoluciones
+                    Returns
                   </a>
                 </li>
                 <li>
                   <a href='#' className='hover:text-foreground'>
-                    Guía de Tallas
+                    Size Guide
                   </a>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h4 className='font-medium mb-4'>Empresa</h4>
+              <h4 className='font-medium mb-4'>Company</h4>
               <ul className='space-y-2 text-sm text-muted-foreground'>
                 <li>
                   <a href='#' className='hover:text-foreground'>
-                    Sobre Nosotros
+                    About Us
                   </a>
                 </li>
                 <li>
                   <a href='#' className='hover:text-foreground'>
-                    Sustentabilidad
+                    Sustainability
                   </a>
                 </li>
                 <li>
                   <a href='#' className='hover:text-foreground'>
-                    Carreras
+                    Careers
                   </a>
                 </li>
                 <li>
                   <a href='#' className='hover:text-foreground'>
-                    Prensa
+                    News
                   </a>
                 </li>
               </ul>
@@ -95,8 +94,7 @@ export const CustomFooter = () => {
 
           <div className='border-t mt-8 pt-8 text-center text-sm text-muted-foreground'>
             <p>
-              &copy; {new Date().getFullYear()} Tesla Style. Todos los derechos
-              reservados.
+              &copy; {new Date().getFullYear()} Fashion Style. All rights reserved.
             </p>
           </div>
         </div>
