@@ -8,7 +8,7 @@ export const HomePage = () => {
 
   return (
     <>
-      <CustomJumbotron title='Todos los productos' />
+      <CustomJumbotron title='All Products' />
 
       <ProductsGrid products={data?.products || []} />
 
