@@ -10,11 +10,11 @@ export const GenderPage = () => {
   const { data } = useProducts();
 
   const genderLabel =
-    gender === 'men' ? 'Hombres' : gender === 'women' ? 'Mujeres' : 'Niños';
+    gender === 'men' ? 'Men' : gender === 'women' ? 'Women' : 'Kids';
 
   return (
     <>
-      <CustomJumbotron title={`Productos para ${genderLabel}`} />
+      <CustomJumbotron title={`Products for ${genderLabel}`} />
 
       <ProductsGrid products={data?.products || []} />
 
