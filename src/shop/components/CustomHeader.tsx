@@ -54,7 +54,7 @@ export const CustomHeader = () => {
                 !gender ? 'underline underline-offset-4' : '',
               )}
             >
-              Todos los productos
+              All Products
             </Link>
             <Link
               to='/gender/men'
@@ -63,7 +63,7 @@ export const CustomHeader = () => {
                 gender === 'men' ? 'underline underline-offset-4' : '',
               )}
             >
-              Hombres
+              Men
             </Link>
             <Link
               to='/gender/women'
@@ -72,7 +72,7 @@ export const CustomHeader = () => {
                 gender === 'women' ? 'underline underline-offset-4' : '',
               )}
             >
-              Mujeres
+              Women
             </Link>
             <Link
               to='/gender/kid'
@@ -81,7 +81,7 @@ export const CustomHeader = () => {
                 gender === 'kid' ? 'underline underline-offset-4' : '',
               )}
             >
-              Niños
+              Kids
             </Link>
           </nav>
 
