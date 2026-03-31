@@ -1,6 +1,7 @@
-import { useAuthStore } from '@/auth/store/auth.store';
 import type { PropsWithChildren } from 'react';
 import { Navigate } from 'react-router';
+
+import { useAuthStore } from '@/auth/store/auth.store';
 
 export const AuthenticatedRoute = ({ children }: PropsWithChildren) => {
   const { authStatus } = useAuthStore();
