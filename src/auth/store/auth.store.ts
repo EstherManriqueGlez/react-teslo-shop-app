@@ -20,7 +20,11 @@ type AuthState = {
   login: (email: string, password: string) => Promise<boolean>;
   logout: () => void;
   checkAuthStatus: () => Promise<boolean>;
-  register: (email: string, password: string, fullName: string) => Promise<boolean>;
+  register: (
+    email: string,
+    password: string,
+    fullName: string,
+  ) => Promise<boolean>;
 };
 
 export const useAuthStore = create<AuthState>()((set, get) => ({
@@ -40,8 +44,6 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
 
   // Actions
   login: async (email: string, password: string) => {
-    console.log({ email, password });
-
     try {
       const data = await loginAction(email, password);
       localStorage.setItem('token', data.token);
@@ -99,7 +101,7 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
     }
   },
 
-    register: async (email: string, password: string, fullName: string) => {
+  register: async (email: string, password: string, fullName: string) => {
     console.log({ email, password, fullName });
 
     try {
