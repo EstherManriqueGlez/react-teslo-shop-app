@@ -94,7 +94,7 @@ export const CustomFooter = () => {
 
           <div className='border-t mt-8 pt-8 text-center text-sm text-muted-foreground'>
             <p>
-              &copy; {new Date().getFullYear()} Fashion Style. All rights reserved.
+              &copy; {new Date().getFullYear()} Teslo Style. All rights reserved.
             </p>
           </div>
         </div>
