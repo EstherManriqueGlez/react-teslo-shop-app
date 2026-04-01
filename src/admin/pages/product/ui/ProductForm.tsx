@@ -14,11 +14,14 @@ interface Props {
   title: string;
   subTitle: string;
   product: Product;
+
+  // Methods
+  onSubmit: (productLike: Partial<Product>) => void;
 }
 
 const availableSizes: Size[] = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
 
-export const ProductForm = ({ title, subTitle, product }: Props) => {
+export const ProductForm = ({ title, subTitle, product, onSubmit }: Props) => {
   const [dragActive, setDragActive] = useState(false);
 
   const {
@@ -34,7 +37,6 @@ export const ProductForm = ({ title, subTitle, product }: Props) => {
 
   const labelInputRef = useRef<HTMLInputElement>(null);
 
-  // eslint-disable-next-line react-hooks/incompatible-library
   const selectedSizes = watch('sizes');
   const selectedTags = watch('tags');
   const currentStock = watch('stock');
@@ -87,11 +89,6 @@ export const ProductForm = ({ title, subTitle, product }: Props) => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     console.log(files);
-  };
-
-  // Remover en un futuro, solo para pruebas.
-  const onSubmit = (productLike: Product) => {
-    console.log('onsubmit', productLike);
   };
 
   return (
