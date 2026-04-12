@@ -20,7 +20,8 @@ export const createUpdateProductAction = async (
     data: rest,
   });
 
-  console.log('createUpdateProductAction', { data });
+  // console.log('createUpdateProductAction', { data });
+  
   return {
     ...data,
     images: data.images.map((image) => {
