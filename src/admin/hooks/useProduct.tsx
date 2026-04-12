@@ -1,9 +1,11 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { getProductByIdAction } from '../actions/get-product-by-id.action';
 import type { Product } from '@/interfaces/product.interface';
 import { createUpdateProductAction } from '../actions/create-update-product.action';
 
 export const useProduct = (id: string) => {
+  const queryClient = useQueryClient();
+
   const query = useQuery({
     queryKey: ['product', { id }],
     queryFn: () => getProductByIdAction(id),
@@ -16,15 +18,16 @@ export const useProduct = (id: string) => {
   const mutation = useMutation({
     mutationFn: createUpdateProductAction,
     onSuccess: (product: Product) => {
-      console.log('Product created/updated successfully', product);
-      // TODO:
-      // invalidate cache or update it directly with the new product data.
+      // Invalidate cache.
+      queryClient.invalidateQueries({ queryKey: ['products'] });
+      queryClient.invalidateQueries({
+        queryKey: ['product', { id: product.id }],
+      });
+
+      // Update the specific product query if it exists.
+      queryClient.setQueryData(['products', { id: product.id }], product);
     },
   });
-
-  // const handleSubmitForm = async (productLike: Partial<Product>) => {
-  //   console.log('handleSubmitForm', productLike);
-  // };
 
   return {
     ...query,
