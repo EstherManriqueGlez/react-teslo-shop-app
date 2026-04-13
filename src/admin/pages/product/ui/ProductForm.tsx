@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router';
 
 import { useForm } from 'react-hook-form';
@@ -50,6 +50,11 @@ export const ProductForm = ({
 
   const labelInputRef = useRef<HTMLInputElement>(null);
   const [files, setFiles] = useState<File[]>([]);
+  
+  useEffect(() => {
+    setFiles([]);
+
+  }, [product]);
 
   // eslint-disable-next-line react-hooks/incompatible-library
   const selectedSizes = watch('sizes');
