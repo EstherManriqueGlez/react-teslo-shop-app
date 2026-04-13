@@ -43,6 +43,7 @@ export const ProductForm = ({
   });
 
   const labelInputRef = useRef<HTMLInputElement>(null);
+  const [files, setFiles] = useState<File[]>([]);
 
   // eslint-disable-next-line react-hooks/incompatible-library
   const selectedSizes = watch('sizes');
@@ -91,12 +92,18 @@ export const ProductForm = ({
     e.stopPropagation();
     setDragActive(false);
     const files = e.dataTransfer.files;
-    console.log(files);
+
+    if (!files) return;
+
+    setFiles((prev) => [...prev, ...Array.from(files)]);
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
-    console.log(files);
+
+    if (!files) return;
+
+    setFiles((prev) => [...prev, ...Array.from(files)]);
   };
 
   return (
@@ -428,6 +435,35 @@ export const ProductForm = ({
                       </p>
                     </div>
                   ))}
+                </div>
+              </div>
+
+              {/* Images to Upload */}
+              <div className="mt-6 space-y-3">
+                <h3 className="text-sm font-medium text-slate-700">
+                  Images to Upload
+                </h3>
+                <div className="grid grid-cols-2 gap-3">
+                  {files.map((file, index) => (
+                    <div key={index} className="relative group">
+                      <img
+                        src={URL.createObjectURL(file)}
+                        alt="Product"
+                        className="w-full h-full object-cover rounded-lg"
+                      />
+                      <button className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                        <X className="h-3 w-3" />
+                      </button>
+                    </div>
+                  ))}
+
+                  {files.length === 0 && (
+                    <div className="aspect-square bg-slate-50 rounded-lg border border-slate-200 flex items-center justify-center">
+                      <p className="text-sm text-slate-400 px-2 text-center">
+                        No new images added
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
