@@ -50,10 +50,9 @@ export const ProductForm = ({
 
   const labelInputRef = useRef<HTMLInputElement>(null);
   const [files, setFiles] = useState<File[]>([]);
-  
+
   useEffect(() => {
     setFiles([]);
-
   }, [product]);
 
   // eslint-disable-next-line react-hooks/incompatible-library
@@ -121,6 +120,27 @@ export const ProductForm = ({
 
     const currentFiles = getValues('files') || [];
     setValue('files', [...currentFiles, ...Array.from(files)]);
+  };
+
+  // Function to remove an existing image from the product's images array
+  const removeImage = (index: number) => {
+    const imageToRemove = [...getValues('images')];
+    imageToRemove.splice(index, 1);
+    setValue('images', imageToRemove);
+  };
+
+  // Function to remove an image file from the new files to be uploaded
+  const removeFile = (index: number) => {
+    const newFiles = [...files];
+    const fileToRemove = newFiles[index];
+    URL.revokeObjectURL(URL.createObjectURL(fileToRemove)); // Revoke the object URL to free memory
+    newFiles.splice(index, 1);
+    setFiles(newFiles);
+
+    // Update the form's files value as well
+    const currentFormFiles = getValues('files') || [];
+    currentFormFiles.splice(index, 1);
+    setValue('files', currentFormFiles);
   };
 
   return (
@@ -444,7 +464,11 @@ export const ProductForm = ({
                           className="w-full h-full object-cover rounded-lg"
                         />
                       </div>
-                      <button className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                      <button
+                        // type="button"
+                        className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer"
+                        onClick={() => removeImage(index)}
+                      >
                         <X className="h-3 w-3" />
                       </button>
                       <p className="mt-1 text-xs text-slate-600 truncate">
@@ -468,7 +492,11 @@ export const ProductForm = ({
                         alt="Product"
                         className="w-full h-full object-cover rounded-lg"
                       />
-                      <button className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                      <button
+                        type="button"
+                        className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer"
+                        onClick={() => removeFile(index)}
+                      >
                         <X className="h-3 w-3" />
                       </button>
                     </div>
