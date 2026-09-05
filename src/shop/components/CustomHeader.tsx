@@ -4,9 +4,11 @@ import { Link, useParams, useSearchParams } from 'react-router';
 import { Search, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Sheet, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { CustomLogo } from '@/components/custom/CustomLogo';
 
+import { MobileMenu } from './MobileMenu';
 import { useAuthStore } from '@/auth/store/auth.store';
 
 export const CustomHeader = () => {
@@ -39,9 +41,19 @@ export const CustomHeader = () => {
         <div className='flex h-16 items-center justify-between'>
           {/* Logo */}
           <div className='flex items-center space-x-4'>
-            <Button variant='ghost' size='icon' className='md:hidden'>
-              <Menu className='h-5 w-5' />
-            </Button>
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button
+                  variant='ghost'
+                  size='icon'
+                  className='md:hidden'
+                  aria-label='Open menu'
+                >
+                  <Menu className='h-5 w-5' />
+                </Button>
+              </SheetTrigger>
+              <MobileMenu />
+            </Sheet>
             <CustomLogo />
           </div>
 
