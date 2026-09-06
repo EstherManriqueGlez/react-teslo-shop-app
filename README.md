@@ -97,4 +97,4 @@ src/
 ## Notes
 
 - The app uses **hash-based routing** (`createHashRouter`), so it works on static hosting without server rewrites.
-- This project was created for learning purposes, following a Udemy course on Angular development to put Angular, TypeScript, and modern frontend tooling into practice.
+- This project was created for learning purposes, following a Udemy course on React development to put React, TypeScript, and modern frontend tooling into practice.
